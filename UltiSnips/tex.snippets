@@ -1,0 +1,59 @@
+snippet init "InitializeArticle" b
+\documentclass[a4paper]{article}
+
+
+\usepackage{amsmath, amssymb}
+\usepackage{hyperref}
+\usepackage{graphicx, caption}
+\captionsetup{textfont=small}
+\captionsetup{width=0.7\linewidth}
+\graphicspath{{img/}}
+
+%kein Zeileneinschub bei neuer Zeile
+\setlength\parindent{0pt}
+
+\usepackage[authoryear]{natbib} % Zitate im Text sind Autor (Jahr), bzw. (Autor, Jahr)
+\usepackage[english]{babel} 
+\bibpunct[:~]{(}{)}{;}{a}{,}{,~} 
+
+
+
+\begin{document}
+
+$0
+\end{document}
+
+
+\newpage
+\bibliographystyle{natdin_lat_mitPunktamEnde}
+\bibliography{bib}
+endsnippet
+
+snippet cite "basicCitation" 
+\cite{$1} $0
+endsnippet
+
+snippet abb "Abbildung referenz" 
+Abbildung~\ref{$1} $0
+endsnippet
+
+snippet subfig "SubFigure"
+\begin{subfigure}[$1]
+\centering
+\includegraphics[width=0.8\linewidth]{$2}
+\caption{$3}
+\label{fig:$2}
+$0
+endsnippet
+
+snippet incgra "IncludeGraphix" 
+\includegraphics[width=0.8\textwidth]{$1}
+$0
+endsnippet
+
+
+snippet subsec "Subsection"  
+\subsection{$1}
+\label{subsec:$1}
+$0
+endsnippet
