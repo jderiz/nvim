@@ -17,7 +17,7 @@ set hlsearch incsearch ignorecase smartcase
 set autochdir
 set hidden
 set wildoptions=pum
-set pumheight=15
+set pumheight=25
 set wildignorecase
 set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
 set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store
@@ -25,7 +25,7 @@ set wildignore+=**/node_modules/**,**/bower_modules/**,*/.sass-cache/*
 set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
 set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
 set wildcharm=<C-z>  " use tab in wildmenue  
-set laststatus=2 statusline+=%{coc#status()}
+set laststatus=2 statusline^=%{coc#status()}
 set clipboard=unnamedplus
 set colorcolumn=80
 highlight CursorLine ctermbg=None

@@ -40,3 +40,8 @@ cnoremap <expr> <Tab>
 	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
 cnoremap <expr> <S-Tab>
 	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>'
+" " For local replace
+" nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+" " For global replace
+" nnoremap gR gD:%s/<C-R>///gc<left><left><left>
+nnoremap <Leader>gd <Plug>(coc-definition)
