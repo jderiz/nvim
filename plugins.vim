@@ -7,25 +7,31 @@ Plug 'morhetz/gruvbox'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Completion surround "coding" and fixing
-" Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+"sources
+Plug 'ncm2/ncm2-jedi', {'for': 'python'}
+Plug 'ncm2/ncm2-pyclang', {'for': ['cpp', 'h']}
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim' , {'for': 'vim'}
 Plug 'ervandew/supertab'
 Plug 'vim-python/python-syntax', {'for': 'python'}
+" Moving around pretty and doing stuff
 Plug 'tpope/vim-surround'
 Plug 'bfrg/vim-cpp-modern' , { 'for': ['cpp', 'h']}
 Plug 'neovimhaskell/haskell-vim' , { 'for': ['hs']}
-Plug 'neoclide/coc.nvim'
+" Plug 'neoclide/coc.nvim'
 Plug 'tpope/vim-commentary'
 Plug 'dense-analysis/ale'
 Plug 'lervag/vimtex' , {'for': 'tex'}
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-" Moving around finding and doing stuff
 " Plug 'Shougo/denite.nvim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
+Plug 'Yggdroot/indentLine'
 Plug 'liuchengxu/eleline.vim' 
-Plug 'mbbill/undotree', { 'on': '<Plug>UndoTreeToggle'}
+Plug 'mbbill/undotree' 
+" { 'on': '<Plug>UndoTreeToggle'}
 Plug 'ap/vim-buftabline'
 Plug 'tpope/vim-fugitive'
 call plug#end()
@@ -36,3 +42,4 @@ let g:Lf_WildIgnore = {
         \ 'dir': ['.svn','.git','.hg'],
         \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
         \}
+

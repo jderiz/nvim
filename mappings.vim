@@ -13,23 +13,15 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
-" buffer switching
 nnoremap <Leader>bp :bprevious<CR>
 nnoremap <Leader>bn :bnext<CR>
-" use tab for coc 
-" and <CR> for completion 
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" search unhilight
 nnoremap <Leader>so  :nohlsearch<CR>
-" fixing
 nnoremap <Leader>fix :ALEFix<CR>
 nnoremap f /
 " Start new line from any cursor position in insert-mode
 inoremap <S-CR> <C-o>o
-" source vimrc
-nnoremap <Leader>vs :so $MYVIMRC<CR>
-" Undotree
-nnoremap <Leader>uh <Plug>(UndoTreeToggle)
+nnoremap <Leader>sv :so $MYVIMRC<CR>
+nnoremap <silent> <Leader>uh :call undotree#UndotreeToggle()<CR>
 " Use tab for indenting in visual/select mode
 xnoremap <Tab> >gv|
 xnoremap <S-Tab> <gv
@@ -40,8 +32,11 @@ cnoremap <expr> <Tab>
 	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
 cnoremap <expr> <S-Tab>
 	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>'
-" " For local replace
-" nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
-" " For global replace
-" nnoremap gR gD:%s/<C-R>///gc<left><left><left>
-nnoremap <Leader>gd <Plug>(coc-definition)
+" Use <TAB> to select the popup menu:
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"Quick go back
+nnoremap <Leader>o <C-o>
+nnoremap <Leader>mr :LeaderfMru<CR>
+" surrounding stuff
+nmap <Leader>sf ysiwf

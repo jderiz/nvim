@@ -1,6 +1,6 @@
 set nocompatible
 set autoread
-au FocusGained,BufEnter * :silent! !
+au focusgained,bufenter * :silent! !
 set encoding=utf-8
 set visualbell
 set backspace=indent,eol,start
@@ -8,7 +8,6 @@ set nobackup
 set noswapfile
 set relativenumber 
 set number 
-set expandtab tabstop=2 shiftwidth=2 softtabstop=2 
 set autoindent
 set autochdir
 set ttyfast lazyredraw
@@ -20,18 +19,33 @@ set wildoptions=pum
 set pumheight=25
 set wildignorecase
 set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
-set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store
+set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.ds_store
 set wildignore+=**/node_modules/**,**/bower_modules/**,*/.sass-cache/*
 set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
 set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
-set wildcharm=<C-z>  " use tab in wildmenue  
-set laststatus=2 statusline^=%{coc#status()}
+set wildcharm=<c-z>  " use tab in wildmenue  
+let g:eleline_slim=1
+set laststatus=2 
 set clipboard=unnamedplus
 set colorcolumn=80
-highlight CursorLine ctermbg=None
-autocmd InsertEnter * highlight  CursorLine ctermbg=17 ctermfg=None
-autocmd InsertLeave * highlight  CursorLine ctermbg=None ctermfg=None
+set undofile
+" let's save undo info!
+" if !isdirectory($home."/.vim")
+"     call mkdir($home."/.vim", "", 0770)
+" endif
+" if !isdirectory($home."/.vim/undo-dir")
+"     call mkdir($home."/.vim/undo-dir", "", 0700)
+" endif
+set undodir=~/.vim/undo-dir
+set undofile
+highlight cursorline ctermbg=none
+autocmd insertenter * highlight  cursorline ctermbg=17 ctermfg=none
+autocmd insertleave * highlight  cursorline ctermbg=none ctermfg=none
+" enable ncm2 for all buffers
+autocmd bufenter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone
 set background=dark
 set foldmethod=syntax foldlevel=20
 colorscheme gruvbox
+filetype plugin on
 syntax enable
