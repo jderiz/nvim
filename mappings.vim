@@ -2,7 +2,7 @@ noremap <Space> <Nop>
 let g:mapleader = " " 
 " quitting etc.
 nnoremap <nowait><Leader>w :write<CR>
-nnoremap <Leader>q :bd<CR>
+nnoremap q :bd<CR>
 nnoremap <Leader>qq :quit<CR>
 nnoremap <Leader>fq :q!<CR>
 nnoremap Y y$
@@ -32,9 +32,11 @@ cnoremap <expr> <Tab>
 	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
 cnoremap <expr> <S-Tab>
 	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>'
+
 " Use <TAB> to select the popup menu:
 " inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 " inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr> <cr> pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 "Quick go back
 nnoremap <Leader>o <C-o>
 nnoremap <Leader>mr :LeaderfMru<CR>

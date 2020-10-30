@@ -1,5 +1,4 @@
 {
 "python.jediEnabled": true,
-"python.autoComplete.addBrackets": true,
-"python.pythonPath": "~/anaconda3/bin/python"
+"python.autoComplete.addBrackets": true
 }
