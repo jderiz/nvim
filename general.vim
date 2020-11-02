@@ -41,13 +41,20 @@ set undofile
 highlight cursorline ctermbg=none
 autocmd insertenter * highlight  cursorline ctermbg=17 ctermfg=none
 autocmd insertleave * highlight  cursorline ctermbg=none ctermfg=none
-" enable ncm2 for all buffers
-" autocmd bufenter * call ncm2#enable_for_buffer()
-let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_auto_completeopt = 0
-let g:asyncomplete_force_refresh_on_context_changed = 1
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:UltiSnipsExpandTrigger="<nop>"
+let g:ulti_expand_or_jump_res = 0
+function! <SID>ExpandSnippetOrReturn()
+  let snippet = UltiSnips#ExpandSnippetOrJump()
+  if g:ulti_expand_or_jump_res > 0
+    return snippet
+  else
+    return "\<C-Y>"
+  endif
+endfunction
+imap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "<Plug>delimitMateCR"
 set completeopt=menuone,noinsert,noselect,preview
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 set background=dark
 set foldmethod=syntax foldlevel=20
 colorscheme gruvbox

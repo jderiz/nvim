@@ -1,0 +1,33 @@
+
+"Plug 'ncm2/ncm2'
+"Plug 'roxma/nvim-yarp'
+""sources
+"Plug 'ncm2/ncm2-jedi', {'for': 'python'}
+"" Plug 'ncm2/ncm2-pyclang', {'for': ['cpp', 'h']}
+"Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-ultisnips'
+"Plug 'ncm2/ncm2-vim' | Plug 'Shougo/neco-vim' , {'for': 'vim'}
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" if executable('pyls')
+"     " pip install python-language-server
+"     au User lsp_setup call lsp#register_server({
+"         \ 'name': 'pyls',
+"         \ 'cmd': {server_info->['pyls']},
+"         \ 'allowlist': ['python'],
+"         \ })
+" endif
+" Plug 'keremc/asyncomplete-clang.vim', {'for': ['c', 'h', 'cpp']}
+" Plug 'andreypopp/asyncomplete-ale.vim'
+" Plug 'prabirshrestha/asyncomplete-buffer.vim'
+" Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+" if has('python3')
+"     let g:UltiSnipsExpandTrigger="<c-e>" 
+" au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+"             \ 'name': 'ultisnips',
+"             \ 'whitelist': ['*'],
+"             \ 'completor': function('asyncomplete#sources#ultisnips#completor')
+"             \ }))
+" endif
