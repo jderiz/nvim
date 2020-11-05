@@ -7,7 +7,7 @@ nnoremap <Leader>qq :quit<CR>
 nnoremap <Leader>fq :q!<CR>
 nnoremap Y y$
 " add to end of line 
-nnoremap <Leader>a A 
+nnoremap <Leader>a A
 " switching splits
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -21,7 +21,9 @@ nnoremap f /
 " Start new line from any cursor position in insert-mode
 inoremap <S-CR> <C-o>o
 nnoremap <Leader>sv :so $MYVIMRC<CR>
-nnoremap <silent> <Leader>uh :call undotree#UndotreeToggle()<CR>
+nnoremap <silent> <Leader>uh :call undotree#UndotreeToggle()<CR> <c
+" CocActions
+nmap <leader>rf <Plug>(coc-refactor)
 " Use tab for indenting in visual/select mode
 xnoremap <Tab> >gv|
 xnoremap <S-Tab> <gv
@@ -32,11 +34,17 @@ cnoremap <expr> <Tab>
 	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
 cnoremap <expr> <S-Tab>
 	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>'
+
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "Quick go back
 nnoremap <Leader>o <C-o>
+"LeaderF
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 " surrounding stuff
 " with function call
 nmap <Leader>sf ysiwf

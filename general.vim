@@ -25,6 +25,12 @@ set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
 set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
 set wildcharm=<c-z>  " use tab in wildmenue  
 let g:eleline_slim=1
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_ShortcutF = "<leader>ff"
+let g:Lf_FollowLinks = 1
+
+
 set laststatus=2 
 set clipboard=unnamedplus
 set colorcolumn=80
@@ -38,6 +44,8 @@ set undofile
 " endif
 set undodir=~/.vim/undo-dir
 set undofile
+"toggle undotree in open
+let g:undotree_SetFocusWhenToggle=1
 highlight cursorline ctermbg=none
 autocmd insertenter * highlight  cursorline ctermbg=17 ctermfg=none
 autocmd insertleave * highlight  cursorline ctermbg=none ctermfg=none
@@ -54,6 +62,7 @@ function! <SID>ExpandSnippetOrReturn()
   endif
 endfunction
 imap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "<Plug>delimitMateCR"
+let g:jedi#completions_enabled = 0
 set completeopt=menuone,noinsert,noselect,preview
 set background=dark
 set foldmethod=syntax foldlevel=20
