@@ -12,30 +12,38 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Moving around and finding stuff
-if has('nvim')
-  Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/denite.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'rafi/vim-denite-z'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
-Plug 'PsychoLlama/teleport.vim'
-" pretty and syntax
+Plug 'mcchrish/nnn.vim'
+" Using Z to find stuff, probably removable with nnn
+" Plug 'PsychoLlama/teleport.vim'
+" syntax
 Plug 'dense-analysis/ale'
 Plug 'bfrg/vim-cpp-modern' , { 'for': ['cpp', 'h']}
 Plug 'neovimhaskell/haskell-vim' , { 'for': ['hs']}
 Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'lervag/vimtex' , {'for': 'tex'}
-Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
-" 
+" Plug 'lervag/vim-rmarkdown', {'for': ['rmarkdown', 'Rmd']}
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} 
+Plug 'darfink/vim-plist', {'for': 'plist'}
+Plug 'vim-pandoc/vim-rmarkdown', {'for': 'rmarkdown'}
+Plug 'vim-pandoc/vim-pandoc', {'for': 'rmarkdown'}
+Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'rmarkdown'}
+" Interpreter and REPL
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable', 'for': ['r', 'Rmd', 'rmarkdown']}
+" Plug 'rhysd/reply.vim', {'on': ['Repl', 'ReplAuto']}
+" Plug 'hkupty/iron.nvim', {'branch': 'direct-invoke'}
+
+" pretty and productive
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
-Plug 'liuchengxu/eleline.vim' 
+" Plug 'liuchengxu/eleline.vim' 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'mbbill/undotree' 
 Plug 'ap/vim-buftabline'
 Plug 'tpope/vim-fugitive'

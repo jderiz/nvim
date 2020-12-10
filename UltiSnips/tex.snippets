@@ -29,6 +29,13 @@ $0
 \bibliography{bib}
 endsnippet
 
+snippet list "make list" b
+\begin{enumerate}[$1]
+\item
+$0
+\end{enumerate}
+endsnippet
+
 snippet cite "basicCitation" 
 \cite{$1} $0
 endsnippet
@@ -56,4 +63,40 @@ snippet subsec "Subsection"
 \subsection{$1}
 \label{subsec:$1}
 $0
+endsnippet
+snippet assignment "TemplateAssignment" b
+\documentclass{article}
+
+% Formatting
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[titletoc,title]{appendix}
+\usepackage{amsmath,amsfonts,amssymb,mathtools}
+\usepackage{graphicx,float}
+
+% Title content
+\title{$1}
+\author{Jannis de Riz}
+\date{\today}
+
+\begin{document}
+\maketitle
+% Abstract
+\begin{abstract}
+\end{abstract}
+\section{$2}
+$0
+\end{document}
+endsnippet
+
+
+
+#### MATH ####
+snippet frac "fraction"
+\frac{$1}{$2}
+$0
+endsnippet
+
+snippet it "new item"
+\item
 endsnippet

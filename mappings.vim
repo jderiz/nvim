@@ -1,5 +1,7 @@
 noremap <Space> <Nop>
-let g:mapleader = " " 
+noremap ; <Nop>
+let maplocalleader = ";"
+let mapleader = " " 
 " quitting etc.
 nnoremap <nowait><Leader>w :write<CR>
 nnoremap q :bd<CR>
@@ -8,6 +10,8 @@ nnoremap <Leader>fq :q!<CR>
 nnoremap Y y$
 " add to end of line 
 nnoremap <Leader>a A
+" change innner word
+nnoremap <localleader>c ciw
 " switching splits
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -24,6 +28,16 @@ nnoremap <Leader>sv :so $MYVIMRC<CR>
 nnoremap <silent> <Leader>uh :call undotree#UndotreeToggle()<CR> <c
 " CocActions
 nmap <leader>rf <Plug>(coc-refactor)
+nmap <leader>rn <Plug>(coc-rename)
+"IRON REPL
+
+" VISUAL LINE 
+nmap <leader>v V
+" FIND AND REPLACE
+nmap <leader>fr :%s/\<<C-r><C-w>\>/
+vmap <leader>fr :s/\<<C-r><C-w>\>/
+" from curser till end of file
+noremap <leader>fre :,$s///gc\|1,''-&&<c-b><right><right><right><right>
 " Use tab for indenting in visual/select mode
 xnoremap <Tab> >gv|
 xnoremap <S-Tab> <gv
@@ -48,4 +62,5 @@ noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 " surrounding stuff
 " with function call
 nmap <Leader>sf ysiwf
-
+" NNN
+nnoremap <silent> <leader>nn :NnnPicker<CR>

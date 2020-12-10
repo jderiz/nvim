@@ -6,7 +6,7 @@ set visualbell
 set backspace=indent,eol,start
 set nobackup
 set noswapfile
-set relativenumber 
+set relativenumber
 set number 
 set autoindent
 set autochdir
@@ -24,14 +24,7 @@ set wildignore+=**/node_modules/**,**/bower_modules/**,*/.sass-cache/*
 set wildignore+=application/vendor/**,**/vendor/ckeditor/**,media/vendor/**
 set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
 set wildcharm=<c-z>  " use tab in wildmenue  
-let g:eleline_slim=1
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:Lf_ShortcutF = "<leader>ff"
-let g:Lf_FollowLinks = 1
-
-
-set laststatus=2 
+set laststatus=2
 set clipboard=unnamedplus
 set colorcolumn=80
 set undofile
@@ -45,24 +38,9 @@ set undofile
 set undodir=~/.vim/undo-dir
 set undofile
 "toggle undotree in open
-let g:undotree_SetFocusWhenToggle=1
 highlight cursorline ctermbg=none
 autocmd insertenter * highlight  cursorline ctermbg=17 ctermfg=none
 autocmd insertleave * highlight  cursorline ctermbg=none ctermfg=none
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-let g:UltiSnipsExpandTrigger="<nop>"
-let g:ulti_expand_or_jump_res = 0
-function! <SID>ExpandSnippetOrReturn()
-  let snippet = UltiSnips#ExpandSnippetOrJump()
-  if g:ulti_expand_or_jump_res > 0
-    return snippet
-  else
-    return "\<C-Y>"
-  endif
-endfunction
-imap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "<Plug>delimitMateCR"
-let g:jedi#completions_enabled = 0
 set completeopt=menuone,noinsert,noselect,preview
 set background=dark
 set foldmethod=syntax foldlevel=20
