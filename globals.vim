@@ -1,4 +1,4 @@
-let g:eleline_slim=1
+" let g:eleline_slim=1
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:Lf_ShortcutF = "<leader>ff"
@@ -29,7 +29,7 @@ let g:airline_theme='base16_gruvbox_dark_hard'
 " No sdefault mappings
 let g:nnn#set_default_mappings = 0
 let g:nnn#layout = { 'window': { 'width': 0.4, 'height': 0.6, 'highlight': 'Debug' } }
-" TEX CONCEAL 
+" TEX CONCEAL
 let g:tex_conceal_frac=1
 " Nvim-R
 let R_assign = 0
