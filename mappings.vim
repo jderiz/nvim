@@ -2,12 +2,15 @@ noremap <Space> <Nop>
 noremap ; <Nop>
 let maplocalleader = ";"
 let mapleader = " " 
-" quitting etc.
+" quitting saving etc.
 nnoremap <nowait><Leader>w :write<CR>
+nnoremap <nowait><Leader>wa :wa<CR>
 nnoremap q :bd<CR>
 nnoremap <Leader>qq :quit<CR>
 nnoremap <Leader>fq :q!<CR>
 nnoremap Y y$
+" get outof insert mod in terminal with ESC
+tnoremap <ESC> <C-\><C-N>
 " add to end of line 
 nnoremap <Leader>a A
 " change innner word
@@ -17,6 +20,9 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
+" move through broken lines
+noremap j gj
+noremap k gk
 nnoremap <Leader>bp :bprevious<CR>
 nnoremap <Leader>bn :bnext<CR>
 nnoremap <Leader>so  :nohlsearch<CR>
@@ -29,6 +35,7 @@ nnoremap <silent> <Leader>uh :call undotree#UndotreeToggle()<CR> <c
 " CocActions
 nmap <leader>rf <Plug>(coc-refactor)
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>gd <Plug>(coc-definition)
 "IRON REPL
 
 " VISUAL LINE 
@@ -63,4 +70,4 @@ noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 " with function call
 nmap <Leader>sf ysiwf
 " NNN
-nnoremap <silent> <leader>nn :NnnPicker<CR>
+nnoremap <silent> <leader>nnn :NnnPicker<CR>
