@@ -1,0 +1,308 @@
+snippet frac "fraction"
+\frac{$1}{$2} $0
+endsnippet
+
+snippet Erbgänge "Mendelsche Erbgänge"
+Dominant = Ein Allel bestimmt die Ausprägung
+Intermediär = (Additiv) Heterozygoten liegen in ihrer Ausprägung zwischen den homozygoten, pro Zelle beide merkmale expremiert!
+kodomonant = pro Zelle ein Merkmal Expremiert aber beide Merkmale liegen parallel vor.(Sichelzellenanemie)
+endsnippet
+  
+snippet genetischesModell "Genetisches Modell" 
+y_i = u + beta_AB* X_AB + beta_BB*X_BB + e
+
+endsnippet
+snippet dominant "dominant vererbung/ modell" 
+# beta_AB!=0, beta_BB==beta_AB
+endsnippet
+
+snippet rezessiv "Rezzesive" 
+# beta_AB == 0, beta_BB != 0
+# wir testen ja effekt von B ~trait. das sollte 0 sein wenn A da ist und B rezessiv ist.
+endsnippet
+
+snippet additive "Additiv standatd" 
+# beta_AB != 0 , beta_BB = 2 beta_AB
+# doppelt soviel B = doppelt soviel effekt.
+# erkennt Heterozygotenvorteil nicht(sichelzellenallel --> bessere anpassung malaria)
+endsnippet
+snippet freq_count "function to get frequencies from counts" 
+freqsFromCounts = function(counts) {
+  # return c(observed_freq_A, observed_freq_B)
+  freqs = c()
+  n = sum(counts)
+  freqs[1] = (counts[1]*2 + counts[2])/(2*n)
+  freqs[2] = (counts[3]*2 + counts[2])/(2*n)
+  return(freqs)
+}
+endsnippet
+snippet linReg "linear model" 
+## große gewicht
+
+x<-c(180,175,160,170,190)
+y<-c(80,80,58,60,85)
+x_m<-mean(x)
+y_m<-mean(y)
+cov_xy<-sum((x-x_m)*(y-y_m)) # COV(x,y)
+var_x<-sum((x-x_m)^2) # VAR(x)
+b1<-cov_xy/var_x 
+b1
+
+b0 = y_m - b1*x_m
+b0
+
+x_wert = 176
+b0+b1*x_wert
+endsnippet
+snippet pca "Hauptkomponenten" 
+# zeilenvektoren
+a = c($1)
+b = c($2)
+c = c($3)
+
+
+A = rbind(a, b, c)
+# already scaled
+eigens = eig(A)
+# scale(eigens$vectors)
+endsnippet
+snippet hardy "HWE from SNPS" 
+AA = $1
+AB = $2
+BB = $3
+df = 1
+missings = $4
+n = AA+AB+BB
+callrate = n / (n+missings)
+# Observed Frequency of Allel
+oA = (2*AA+AB)/(2*n)
+oB = (2*BB+AB)/(2*n)
+oA
+oB
+
+# HWE frequency of Genotypes
+pAA = oA^2
+pAB = 2*oA*oB
+pBB = oB^2
+pAA
+pAB
+pBB
+
+
+endsnippet
+snippet hardy_test "test hardy weinberg" 
+## Chi Test
+obs = c(AA, AB, BB)
+obs
+exp = c(n*pAA,n*pAB, n*pBB)
+exp
+chi = sum(((obs-exp)^2)/exp)
+chi
+1-pchisq(chi, df=1)
+endsnippet
+snippet errorRate "FWER vs FDR" 
+FWER gibt sicherheit an (1-apha)keine falschpositiven aussagen zu machen. 0.05 ist also die wahrscheinlichkeit eine Nullhypothese fälschlicherweise abzulehnen.
+
+FDR kontrolliert den erwarteten Anteil an fälschlicherweise abgelehnten H_0.
+
+unterscheide also zwischen der wahrscheinlichkeit ÜBERHAUPT eine falsch abzulehnen(FWER) und dem beschränken auf einen gewissen ANTEIL an falsch abgelehnten(FDR)
+
+endsnippet
+
+snippet followUp "followUp design"
+
+Haben eQTL, wollen TWAS, SNP->Trait MIT ERKLÄRUNG.
+Das Ziel ist es eine Verbindung/assoziation zwischen den Markern(SNPS) und dem klinischen Phänotyp von Interesse herzustellen.
+Die Assiziation von Marker zu Genetischer Expression besteht bereits. Die so gefundenen Assoziationen ermöglichen die Bestimmung von eQTLs, also SNPS die mit der Expression eines Gen loci assoziiert sind. 
+
+
+Genexpressions-assoziationsanalyse. Imputed TWAS. Meta-Analyse
+Es stehen einem nun mehrer Optionen zuf Verfügung je nach Kapital und Zeit Ressourcen.
+Da man bereits die eQTL gerechnet hat und somit eine assoziation von SNP zu Gen expression kann man nun versuchen eine Biologisch plausibele assoziation zwischen SNP und Trait zu finden. Aufgrund der oft kleinen genetischen Effekte braucht man hinreichend viele Samples um genug power zu haben. Ein Ansatz wäre also Studien Daten zu kombinieren was zwar mehr samples gibt aber auch seine Nachteile bezüglich confoundern und stratifikation generell hat. Eine weitere Optione wäre es eine hinreichend große Studie ohne Transkriptom daten zu nehmen die sowohl Genotyp als auch Trait gemessen hat und die Gen expression mithilfe der Daten aus der ersten studie und einem Framework wie PrediXcan zu imputieren. Dabei ist die imputation zwar auch subjekt zu Ethnie, Gewebe und anderen Faktoren allerdings kann man so sehr große sample Größen erreichen.
+
+In beiden Fällen wird der Schritt über die Genexpression gewählt um eine bessere Erklärbarkeit der Biologie zu gewährleisten, da auf Gen ebene viele Verbindungen und wirkweisen (pathways)von Gen zu Phänotyp bekannt sind.
+
+Bei der Metaanalyse ist es außerdem wichtig auf unabhängigkeit der Studien zu achten da ansosnten die effekte dieser studien unproportional eingehen. Grundsätzlich stehen einem für die Meta-Analyse zwei modell typen zur Verfügung. Fixed sowie Random. Fixed geht davon aus das die Effekte zwischen den Studien homogen sind Random geht davon aus das sie heterogen sind. 
+
+Zur Visulaisierung von meta-analysen kann ein Forest plot verwendet werden. Darin wird der effekt der studie zusammen mit einem Konfidenzintervall angegeben sowie die Gewichtung der einzelnen Studie. So lassen sich meta effekte und heterogenität bewerten.
+endsnippet
+
+snippet mendelRando "mendlesche Randomisierung" 
+
+Randomisierte Klinische Studien sind of sehr kosten und zeitintensiv. Die wachsende Zahl and Genotypisierungsdaten ermöglicht allerdings ähnliche Erkentnissgewinne in deutlich begrenzterem Geld und zeitumfang. Dazu wird die Natürliche Randomisierung von GEnetischen Markern in den Genomen von Individuen verwendet. Die so entstehenden Genotyp-Gruppen sind also von Natur aus Randomisiert und ersetzen damit das Klassiche placebo/medikament design.
+Im Gegensatz zu Placebo/medikament wird der Vergleich zwischen Risiko/Nichtrisiko-Allel gemacht. Nun wird der Ansatz Instrumenteller Variabeln gemacht und somit versucht die Kausalität von einer Variabeln(Genexpression X) auf eine Variable Y von interesse zu schätzen. Dabei müssen 3 Regeln Erfüllt sein.
+
+1.) Instrument und Variable X müssen (stark) korreliert sein.
+2.) Z ist unabhängig von allen Condoundern die X~Y beeinflussen könnten
+3.) gegeben X und seine Confounder, gibt es keine direkte beziehung zwischen Z und Y.
+(1 gut zu zeigen. 2.plausibiliesierbar. 3. nicht zu beweisen.)
+endsnippet
+snippet multiTest "Verfahren für multiples testen" 
+alpha = $1 # default0.05
+L = $2
+p_vals = c($3)
+
+# BONF-HOLM
+# weniger konservativ als bonferroni
+sortedHi = sort(p_vals)
+# Bonferroni FWER
+# simpel
+a_bonf = alpha/L
+a_bonf
+adj_bonf = sortedHi*L
+adj_bonf
+adj_bonf<alpha
+aHOLM = c()
+aBH = c()
+for( i in 1:L ) {
+	aHOLM[i] = round(alpha/((L-i)+1), 3)
+	aBH[i] = round(i*alpha/L, 3)
+}
+# bonferroni holm lehne alle ab erstem True von links
+sortedHi
+sortedHi>aHOLM
+aHOLM
+
+## BHochberg lehne alle ab bis zum letzten TRUE von links. Liberaler
+# größes k für das gilt p(Hk)< k*alpha/L,  lehne ALLE 1 bis k ab.
+sortedHi
+sortedHi < aBH
+aBH
+
+endsnippet
+
+snippet prävalenz "prävalenz vierfelder" 
+
+# Vierferldertafel
+# 	K+     	 K-   
+      |	      |	     |
+# T+  |	p00   |	p01  |	p0.
+--------------|------|--------
+# T-  |	p10   | p11  |	p1.
+--------------|------|--------
+	p.0   | p.1  |	1
+TN = $1
+TP = $2
+FN = $3
+FP = $4
+p00 = TP/(TP+FN)
+p01 = FP
+p10 = FN
+p11 = TN/(TN+FP)
+p0. = p00+p01
+p1. = p10+p11
+p.0 = p00+p10
+p.1 = p10+p11
+
+endsnippet
+snippet linkaged "Vierferldertafel Linkage Desiquilibrium" 
+# Vierferldertafel
+# 	A     	B   
+      |	      |	     |
+# A   |	p00   |	p01  |	p0.
+--------------|------|--------
+# B   |	p10   | p11  |	p1.
+--------------|------|--------
+	p.0   | p.1  |	1
+
+
+p00 = $1
+p01 = $2
+p10 = $3
+p11 = $4
+p0. = p00+p01
+p1. = p10+p11
+p.0 = p00+p10
+p.1 = p10+p11
+
+# odds-ratio
+lambda=(p00*p11)/(p01*p10)
+
+# LD-Maße
+D = p00-p.0*p0.
+if (D >=0){
+	Dmax = min(c((p0.*p.1),(p.0*p1.) ))
+} else if (D < 0){
+	Dmax = min(c((p0.*p.0),(p1.*p.1)))
+}
+r = D/(sqrt(p0.*p.0*p1.*p.1)
+r2 = r^2
+D' = D/Dmax
+Q = (lambda -1)/(lambda +1)
+Y = (sqrt(lambda)-1)/(sqrt(lambda)+1)
+endsnippet
+snippet fixation "Inzucht/Fixationsindizes" 
+# basierend auf Heterozygosität der populationen und sub-populationen
+# Fst = Abstand zwischen sub-populationen
+# Fis = Inzucht relativ zu S
+# Fit = Inzucht relativ zu T
+# p1 .. pN subpopulationen.
+F = (expAB-obsAB)/expAB
+# das individuum wird als durchschnitt von ALLEN sub-pops verstanden.
+HI = (p1[2]+p2[2]+p3[2])/n
+# the sum of all expected under HWE divided by all samples
+HS = (expAB1 + expAB2+ expAB3)/n
+# T ist Welt/ gesamtpopulation also der expected Heterozygosität von gesamt
+HT = 2*freqsG[1]*freqsG[2]
+HI
+HS
+HT
+
+endsnippet
+snippet inzucht "Inzucht/Fixationsindizes" 
+# basierend auf Heterozygosität der populationen und sub-populationen
+# Fst = Abstand zwischen sub-populationen
+# Fis = Inzucht relativ zu S
+# Fit = Inzucht relativ zu T
+# p1 .. pN subpopulationen.
+F = (expAB-obsAB)/expAB
+# das individuum wird als durchschnitt von ALLEN sub-pops verstanden.
+HI = (p1[2]+p2[2]+p3[2])/n
+# the sum of all expected under HWE divided by all samples
+HS = (expAB1 + expAB2+ expAB3)/n
+# T ist Welt/ gesamtpopulation also der expected Heterozygosität von gesamt
+HT = 2*freqsG[1]*freqsG[2]
+HI
+HS
+H
+endsnippet
+
+snippet loglikeli "LogLikelihood" 
+n=$1
+p=$2
+alla=c()
+a = for(k in 0:n) {
+	a= choose(n,k)*p^k*(1-p)^(n-k)
+	alla=c(alla, a)
+}
+table(cumsum(alla)>=0.05)
+
+endsnippet
+
+snippet hirarchischFDR "Hirarchische Bonferroni" 
+
+	G1 = c($1)
+	G2 = c($2)
+	mini_G1 = min(G1)
+mini_G2 = min(G2)
+	n_1 = $3
+	n_2 = $4
+	nG = $5
+# adjustierung für multi-test in einem Gen mit jeweilliger Anzahl an tests in Gen
+	padj1_G1 = mini_G1*n_1
+	padj1_G2 = mini_G2*n_2
+# adjustierung für testen über n Gene
+	padj2_G1 = padj1_G1*nG
+	padj2_G2 = padj1_G2*nG
+# Das minimum dieses 2 Stufen verfahrens bildet den threshold
+thresh = min(c(padj2_G1, padj2_G2))
+# wenn jetzt der lokal adjustierte p-wert unter dem threshold liegt dann geht man von signifikant aus.
+G1_adj = G1*n_1
+G2_adj = G2*n_2
+# wir inkludiren alles kleiner GLEICH
+G1_sig = G1_adj<=thresh
+G2_sig = G2_adj<=thresh
+G1_sig
+G2_sig
+
+endsnippet

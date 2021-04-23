@@ -1,0 +1,60 @@
+#1 
+
+a)
+SNP = Single Nucleotide Polymorphism. Das beschreibt einen vielartigkeit an einem einzelnen Nukleotid. also an einer exact definierten stelle 
+einmal G und einmal C wobei die umliegenden Nukleotide identisch sind. Der Mensch hat etwa allle 1000 bp einen solchn polymprphismius.
+b)
+Frameshift-Mutation = durch eine insertion oder deletion kann es passieren, dass das Lese-Frame in dem die Nukleotide --> Aminosäuren sich ändert relativ zum start-codon. bei einem shifts die das vielfache von 3 betragen werden zusätzliche AS eingefügt oder entfernt aber die restlichen AS bleiben gleich. abweichungen davon ändert sich oft die gesamte AS abfolge.
+
+Deletion = bezeichnet das "wegfalle" einer oder mehrerer Nukleotide ohne das sie ersetzt werden.
+
+
+```{r a}
+
+AA = 
+AB = 
+BB = 
+df = 1
+missings = 
+n = AA+AB+BB
+callrate = n / (n+missings)
+# Observed
+oA = (2*AA+AB)/(2*n)
+oB = (2*BB+AB)/(2*n)
+oA
+oB
+
+# HWE
+pAA = oA^2
+pAB = 2*oA*oB
+pBB = oB^2
+pAA
+pAB
+pBB
+
+## Chi Test
+obs = c(AA, AB, BB)
+exp = c(n*pAA,n*pAB, n*pBB)
+chi = sum(((obs-exp)^2)/exp)
+1-pchisq(chi, df=1)
+```
+
+#2
+
+Crossing-over bezeichnet das "vermischen" väterlicher und Mütterlicher erbinformation auf einem Chromosom während der Meiose. Das ist einer der 
+Vorteile von Sexueller Fortpflanzung, da so mehr variation entsteht. Dabei 
+
+An bestimmten lokussen, diese sind durch ein motif charakterisiert das PRDM9 bindet, wird durch diese Bindung die DNA "gebrochen" und durch die Kopie am anderen Chromosom ersetzt. PRDM9 entwickelt sich weiter um neue stellen zu binden. Nachdem alle Orte die es binden konnte ersetzt wurden durch die Kopie. So entsteht LD und, Deshalb sind die LD's der untershciedlcihen populationen auch unterschiedlich. Weil ihre Rekombinationshotspots unterschiedlich sind weil ihre PRDM9 Motive unterschiedliche entwicklung durchlaufen haben.
+
+Ein Rekombinationshotspot ist genau so eine geraed beschriebene Stelle an der PRDM9 extrem gut bindet. Also ein ort an dem die DNA struktur aufgeteilt wird und ein Teil durch die Kopie ersetzt wird. Die Bereiche zwischen diesen hotspots sind in der Regel im Linkage disequilibrium.
+
+LD beschreibt genau diese statistische abhängigkeit. Das also die postionen über erwartungsmäßig häufig zusammen vererbt werden. 
+Angenommen alle positionen sind statistisch unabhängig bezüglich ihrer vererbung, d.h alle rekombinationen sind komplett zufällig in ihrer position. Dann nimmt die Wahrscheinlichkeit gemeinsam vererbt zu werden proportional zu ihrem Abstand auf dem Genom zueinander ab. Da ja immer mehr Orte zwischen ihnen liegen an denen rekombiniert werden könnte! Wenn jetzt Aber zwei positionen verhältnismäßig öfter gemeinsam vererbt werden als durch zufall erwarten dann sind sie in einem Kopplungsungleichgewicht(LD)!
+
+#5 
+eQTL = expression quantitative trait loci. beschreibt einen SNP der mit der Expression eines oder mehrerer Gene assoziiert ist. Um diese assoziation zu berechnen braucht man Genom und transkriptom daten ohne weitere Hiflsmittel. PrediXcan und tools dieser Art können einem jedoch die Messung von Transkriptomen zum Teil abnehmen indem sie aus dem Genotyp mit vorher gerechneten modellen das Transkriptom schätzen. 
+
+
+hirarchisches Testen begegnet der Problematik, dass bei einer GWAS sowohl ALLE SNPs auf ein Gen getestet werden aber eben das auch für ALLE Gene.
+Dadurch muss man auf 2 Stufen die p werte korrigieren,(SNPs, GENE). 
+

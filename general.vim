@@ -10,7 +10,7 @@ set relativenumber
 set number 
 set autoindent
 set autochdir
-set ttyfast lazyredraw
+"set ttyfast lazyredraw
 set showmatch
 set hlsearch incsearch ignorecase smartcase
 set autochdir
@@ -26,7 +26,7 @@ set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
 set wildcharm=<c-z>  " use tab in wildmenue  
 set laststatus=2
 set clipboard=unnamedplus
-set colorcolumn=80
+set colorcolumn=120
 set undofile
 " let's save undo info!
 " if !isdirectory($home."/.vim")

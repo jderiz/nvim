@@ -16,27 +16,33 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh'}
 Plug 'mcchrish/nnn.vim'
 " Using Z to find stuff, probably removable with nnn
 " Plug 'PsychoLlama/teleport.vim'
+
 " syntax
 Plug 'dense-analysis/ale'
-Plug 'bfrg/vim-cpp-modern' , { 'for': ['cpp', 'h']}
+Plug 'bfrg/vim-cpp-modern' , { 'for': ['cpp', 'h', 'cc']}
 Plug 'neovimhaskell/haskell-vim' , { 'for': ['hs']}
 Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'lervag/vimtex' , {'for': 'tex'}
 " Plug 'lervag/vim-rmarkdown', {'for': ['rmarkdown', 'Rmd']}
-Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} 
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': ['tex']} 
 Plug 'darfink/vim-plist', {'for': 'plist'}
-Plug 'vim-pandoc/vim-rmarkdown', {'for': 'rmarkdown'}
-Plug 'vim-pandoc/vim-pandoc', {'for': 'rmarkdown'}
-Plug 'vim-pandoc/vim-pandoc-syntax', {'for': 'rmarkdown'}
+Plug 'vim-pandoc/vim-rmarkdown', {'for': ['rmarkdown']}
+Plug 'vim-pandoc/vim-pandoc', {'for': ['rmarkdown' ]}
+Plug 'vim-pandoc/vim-pandoc-syntax', {'for': [ 'rmarkdown']}
+
 " Interpreter and REPL
-Plug 'jalvesaq/Nvim-R', {'branch': 'stable', 'for': ['r', 'Rmd', 'rmarkdown']}
+Plug 'jalvesaq/Nvim-R', {'branch': 'stable', 'for': ['r', 'rmarkdown']}
 " Plug 'rhysd/reply.vim', {'on': ['Repl', 'ReplAuto']}
 " Plug 'hkupty/iron.nvim', {'branch': 'direct-invoke'}
 
+" DEBUG
+Plug 'puremourning/vimspector', {'for': ['cpp', 'cc', 'py', 'java']}
+
 " pretty and productive
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-sleuth'  
 Plug 'tpope/vim-surround'
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
