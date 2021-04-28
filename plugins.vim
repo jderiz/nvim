@@ -26,12 +26,12 @@ Plug 'lervag/vimtex' , {'for': 'tex'}
 " Plug 'lervag/vim-rmarkdown', {'for': ['rmarkdown', 'Rmd']}
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': ['tex']} 
 Plug 'darfink/vim-plist', {'for': 'plist'}
-Plug 'vim-pandoc/vim-rmarkdown', {'for': ['rmarkdown']}
-Plug 'vim-pandoc/vim-pandoc', {'for': ['rmarkdown' ]}
-Plug 'vim-pandoc/vim-pandoc-syntax', {'for': [ 'rmarkdown']}
+" Plug 'vim-pandoc/vim-rmarkdown', {'for': ['rmarkdown']}
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " Interpreter and REPL
-Plug 'jalvesaq/Nvim-R', {'branch': 'stable', 'for': ['r', 'rmarkdown']}
+" Plug 'jalvesaq/Nvim-R', {'branch': 'stable', 'for': ['r', 'rmarkdown']}
 " Plug 'rhysd/reply.vim', {'on': ['Repl', 'ReplAuto']}
 " Plug 'hkupty/iron.nvim', {'branch': 'direct-invoke'}
 
